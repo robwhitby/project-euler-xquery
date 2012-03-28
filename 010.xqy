@@ -1,5 +1,7 @@
 xquery version "1.0";
 
+declare namespace math="java:java.lang.Math";
+
 (: 
 The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
 
@@ -15,7 +17,7 @@ declare function local:sieve($seq, $primes, $max)
 };
 
 declare function local:sieve($max as xs:integer) {
-  local:sieve((2 to $max), (), 1415 (: math:sqrt($max) :))  
+  local:sieve((2 to $max), (), math:sqrt($max))  
 };
 
 fn:sum(local:sieve(2000000))
