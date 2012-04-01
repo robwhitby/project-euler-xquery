@@ -25,10 +25,10 @@ What is the value of the first triangle number to have over five hundred divisor
 declare function local:num-factors($n)
 {
   let $sqrt := xs:long(math:sqrt($n))
-  return fn:sum(
+  return fn:sum((
     fn:count((1 to $sqrt)[$n mod . eq 0]) * 2,
     if ($sqrt * $sqrt eq $n) then -1 else 0
-  )
+  ))
 };
 
 declare function local:triangles($triangle, $n, $divisors) {

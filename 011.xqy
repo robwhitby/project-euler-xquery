@@ -1,5 +1,10 @@
 xquery version "1.0-ml";
 
+(:
+What is the greatest product of four adjacent numbers in any direction 
+(up, down, left, right, or diagonally) in the 20 x 20 grid?
+:)
+
 declare function local:fold($fn, $x, $seq) { 
   if (fn:exists($seq)) 
   then local:fold($fn, xdmp:apply($fn, $x, $seq[1]), fn:subsequence($seq, 2)) 
@@ -33,5 +38,5 @@ return fn:max((
   ,
   for $x in ($window - 1 to $size - 1), $y in (0 to $size - $window)
   let $points := for $i in (0 to $window - 1) return $grid[@x = $x - $i and @y = $y + $i]
-  return local:fold($product-fn, 1, $points/@v) 
+  return local:fold($product-fn, 1, $points/@v)
 ))
