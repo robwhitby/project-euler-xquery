@@ -16,7 +16,7 @@ hundred natural numbers and the square of the sum.
 
 let $range := (1 to 100)
 
-let $sum-of-squares:= fn:sum(math:pow($range, 2))
+let $sum-of-squares := fn:sum(math:pow($range, 2))
 let $sum-squared := math:pow(fn:sum($range), 2)
 
 return $sum-squared - $sum-of-squares
